@@ -8,7 +8,7 @@ import './database/connection';
 
 dotenv.config();
 
-const PORT: number = Number(process.env.port) || 3000;
+const PORT: number = Number(process.env.PORT) || 3001;
 const app = express();
 
 app.use(bodyParser.json());

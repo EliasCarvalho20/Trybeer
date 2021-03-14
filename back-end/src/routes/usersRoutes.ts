@@ -1,11 +1,12 @@
 import { Router } from 'express';
+
 import { useExpressServer } from 'routing-controllers';
 import UserController from '../controllers/userController';
 
-const routes = Router();
+const usersRouter = Router();
 
-useExpressServer(routes, {
+useExpressServer(usersRouter, {
   controllers: [UserController],
 });
 
-export default routes;
+export default usersRouter;
