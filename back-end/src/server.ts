@@ -8,10 +8,10 @@ import './database/connection';
 
 dotenv.config();
 
-const { PORT } = process.env;
+const PORT: number = Number(process.env.port) || 3000;
 const app = express();
 
 app.use(bodyParser.json());
 app.use(routes);
 
-app.listen(PORT, () => console.log(`Patiently Waiting At ${PORT}`));
+app.listen(PORT, () => console.log(`You Better Lose Yourself In The port ${PORT}`));
