@@ -1,21 +1,23 @@
 import { verify } from 'jsonwebtoken';
 import { Action } from 'routing-controllers';
 import { getRepository } from 'typeorm';
-import User from '../models/UserModels';
+import User from '../models/UsersModel';
+
+import { missingToken, invalidToken } from '../errors';
 
 const secret = 'ThisIsNotASecret';
 
 export default async (action: Action, roles: string[]): Promise<boolean> => {
   const token = action.request.headers.authorization;
-  if (!token) return false;
+  if (!token) throw missingToken;
 
   const isTokenValid = verify(token, secret);
-  if (!isTokenValid) return false;
+  if (!isTokenValid) throw invalidToken;
 
-  const { email, role } = isTokenValid;
+  const { email, role }: any = isTokenValid;
   const user = await getRepository(User).findOne({ where: { email } });
 
-  if (user && role !== roles[0]) return false;
+  if (!user && roles.findIndex(item => role === item) === -1) return false;
 
   return true;
 };

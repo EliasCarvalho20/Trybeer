@@ -3,12 +3,12 @@ import { validateOrReject } from 'class-validator';
 import { hashSync } from 'bcryptjs';
 
 import { Repository } from 'typeorm/repository/Repository';
-import User from '../models/UserModels';
+import User from '../models/UsersModel';
 import { emailAlreadyInUse, invalidEntry } from '../errors';
 import { UserInterface } from '../interface';
 
 class CreateUser {
-  public async execute({ name, email, password, role = 'user' }: UserInterface): Promise<User> {
+  public async execute({ name, email, password, role = 'client' }: UserInterface): Promise<User> {
     const usersRepository = getRepository(User);
 
     await this.validateUserFields({ name, email, password });

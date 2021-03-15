@@ -1,10 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-import { Length, IsEmail } from 'class-validator';
+import { Length, IsEmail, IsInt } from 'class-validator';
 
 @Entity('users')
 class User {
   @PrimaryGeneratedColumn('increment')
-  id: string;
+  id: number;
 
   @Column()
   @Length(3, 100)

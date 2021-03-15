@@ -2,7 +2,7 @@ import { getRepository } from 'typeorm';
 import { compareSync } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 
-import User from '../models/UserModels';
+import User from '../models/UsersModel';
 import { AuthInterface, userWithTokenInterface } from '../interface';
 import { invalidEmailOrPassword, invalidEntry } from '../errors';
 
