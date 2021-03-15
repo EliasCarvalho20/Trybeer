@@ -6,8 +6,6 @@ export const invalidEntry = new HttpError(422, 'Invalid entries. Try again.');
 
 export const invalidEmailOrPassword = new HttpError(400, 'Incorrect username or password');
 
-export const missingToken = new HttpError(401, 'Missing authentication token');
-
 //   OK: 200,
 //   CREATED: 201,
 //   NO_CONTENT: 204,

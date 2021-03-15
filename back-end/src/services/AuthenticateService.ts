@@ -1,23 +1,30 @@
 import { getRepository } from 'typeorm';
-import { compare } from 'bcryptjs';
+import { compareSync } from 'bcryptjs';
+import { sign } from 'jsonwebtoken';
 
 import User from '../models/UserModels';
-import { AuthInterface } from '../interface';
+import { AuthInterface, userWithTokenInterface } from '../interface';
 import { invalidEmailOrPassword, invalidEntry } from '../errors';
 
+const secret = 'ThisIsNotASecret';
+
 class AuthenticateService {
-  public async execute({ email, password, role }: AuthInterface): Promise<User> {
+  public async execute({ email, password }: AuthInterface): Promise<userWithTokenInterface> {
     const usersRepository = getRepository(User);
 
     if (!email || !password) throw invalidEntry;
 
-    const isUserValid = await usersRepository.findOne({ where: { email } });
+    const isUserValid = await usersRepository.findOne({ where: { email, password } });
     if (!isUserValid) throw invalidEmailOrPassword;
 
-    // const passwordMatched = await compare(password, isUserValid.password);
+    // const passwordMatched = compareSync(password, isUserValid.password);
     // if (!passwordMatched) throw invalidEmailOrPassword;
 
-    return isUserValid;
+    const { name, role } = isUserValid;
+
+    const token = sign({ email, role }, secret, { expiresIn: '2d' });
+
+    return { name, email, token, role };
   }
 }
 

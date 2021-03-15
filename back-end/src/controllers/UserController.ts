@@ -6,7 +6,7 @@ import CreateUser from '../services/UserServices';
 @JsonController()
 class UserController {
   @Post('/register')
-  @OnUndefined(201)
+  @OnUndefined(404)
   async createUser(@Body() user: UserInterface): Promise<void> {
     const createUser = new CreateUser();
     await createUser.execute(user);
