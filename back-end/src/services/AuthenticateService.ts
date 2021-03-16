@@ -4,7 +4,7 @@ import { sign } from 'jsonwebtoken';
 
 import User from '../models/UsersModel';
 import { AuthInterface, userWithTokenInterface } from '../interface';
-import { invalidEmailOrPassword, invalidEntry } from '../errors';
+import { invalidEmailOrPassword, invalidEntry } from '../library/errors';
 
 const secret = 'ThisIsNotASecret';
 
@@ -20,11 +20,14 @@ class AuthenticateService {
     // const passwordMatched = compareSync(password, isUserValid.password);
     // if (!passwordMatched) throw invalidEmailOrPassword;
 
-    const { name, role } = isUserValid;
+    const { password: _, ...userWithoutPassword } = isUserValid;
 
-    const token = sign({ email, role }, secret, { expiresIn: '2d' });
+    const token = sign(userWithoutPassword, secret, { expiresIn: '2d' });
 
-    return { name, email, token, role };
+    return {
+      ...userWithoutPassword,
+      token,
+    };
   }
 }
 

@@ -1,17 +1,16 @@
 import { Response } from 'express';
 import { JsonController, OnUndefined, Res, Body, Post } from 'routing-controllers';
 
-import { UserInterface } from '../interface';
 import CreateUser from '../services/UserServices';
+import User from '../models/UsersModel';
 
 @JsonController()
 class UsersController {
   @Post('/register')
   @OnUndefined(404)
-  async createUser(@Res() res: Response, @Body() user: UserInterface): Promise<void> {
-    const createUser = new CreateUser();
-    await createUser.execute(user);
-    res.send(201).end();
+  async createUser(@Res() res: Response, @Body({ validate: true }) user: User): Promise<void> {
+    await new CreateUser(user).execute();
+    res.sendStatus(201).end();
   }
 }
 

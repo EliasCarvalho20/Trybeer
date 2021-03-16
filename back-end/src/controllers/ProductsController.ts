@@ -1,4 +1,4 @@
-import { JsonController, OnUndefined, Get, Authorized } from 'routing-controllers';
+import { JsonController, OnUndefined, Req, Get, Authorized } from 'routing-controllers';
 
 import { getRepository } from 'typeorm';
 import Product from '../models/ProductsModel';
@@ -9,7 +9,7 @@ class ProductsController {
   @Authorized(['client', 'administrator'])
   @Get('/products')
   @OnUndefined(404)
-  async getAllProducts(): Promise<productArray> {
+  async getAllProducts(@Req() req: Request): Promise<productArray> {
     return getRepository(Product).find();
   }
 }

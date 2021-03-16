@@ -1,51 +1,50 @@
-import { getRepository } from 'typeorm';
-import { validateOrReject } from 'class-validator';
+import { getRepository, Repository } from 'typeorm';
 import { hashSync } from 'bcryptjs';
 
-import { Repository } from 'typeorm/repository/Repository';
 import User from '../models/UsersModel';
-import { emailAlreadyInUse, invalidEntry } from '../errors';
+import { emailAlreadyInUse } from '../library/errors';
 import { UserInterface } from '../interface';
 
 class CreateUser {
-  public async execute({ name, email, password, role = 'client' }: UserInterface): Promise<User> {
-    const usersRepository = getRepository(User);
+  usersRepository: Repository<User>;
 
-    await this.validateUserFields({ name, email, password });
+  name: string;
 
-    return this.validateUser(usersRepository, { name, email, password, role });
+  email: string;
+
+  password: string;
+
+  role: string;
+
+  constructor({ name, email, password, role = 'client' }: UserInterface) {
+    this.usersRepository = getRepository(User);
+    this.name = name;
+    this.email = email;
+    this.password = password;
+    this.role = role;
   }
 
-  public async validateUser(
-    usersRepository: Repository<User>,
-    { name, email, password, role }: UserInterface,
-  ): Promise<User> {
-    const checkEmailExists = await usersRepository.findOne({ where: { email } });
+  public async execute(): Promise<User> {
+    return this.validateUser();
+  }
+
+  public async validateUser(): Promise<User> {
+    const { email } = this;
+    const checkEmailExists = await this.usersRepository.findOne({ where: { email } });
     if (checkEmailExists) throw emailAlreadyInUse;
 
     // const hashedPassword = hashSync(password, 16);
 
-    const userCreated = usersRepository.create({
-      name,
-      email,
-      password,
-      role,
+    const userCreated = this.usersRepository.create({
+      name: this.name,
+      email: this.email,
+      password: this.password,
+      role: this.role,
     });
 
-    await usersRepository.save(userCreated);
+    await this.usersRepository.save(userCreated);
 
     return userCreated;
-  }
-
-  public async validateUserFields({ name, email, password }: UserInterface): Promise<void> {
-    if (!name || !email || !password) throw invalidEntry;
-
-    const userToValidate = new User();
-    userToValidate.name = name;
-    userToValidate.email = email;
-    userToValidate.password = password;
-
-    return validateOrReject(userToValidate);
   }
 }
 

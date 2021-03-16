@@ -13,6 +13,7 @@ useExpressServer(routes, {
   middlewares: [ErrorHandler],
   authorizationChecker: authMiddleware,
   defaultErrorHandler: false,
+  validation: false,
 });
 
 export default routes;

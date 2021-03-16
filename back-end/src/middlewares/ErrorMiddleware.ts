@@ -9,8 +9,8 @@ export default class ErrorHandler implements ExpressErrorMiddlewareInterface {
     const { httpCode, message } = err || undefined;
     const { errors } = err || undefined;
 
-    if (errors) {
-      const { constraints } = errors[0];
+    if (err[0] || errors) {
+      const { constraints } = err[0] || errors[0];
       return res.status(422).json({ ...constraints });
     }
     if (err instanceof JsonWebTokenError) return res.status(401).json({ message });

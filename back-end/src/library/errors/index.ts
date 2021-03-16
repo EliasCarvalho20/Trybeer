@@ -8,7 +8,7 @@ export const invalidEmailOrPassword = new HttpError(400, 'Incorrect username or 
 
 export const missingToken = new HttpError(400, 'Missing authentication token');
 
-export const invalidToken = new HttpError(401, 'Malformed token');
+export const notAuthorized = new HttpError(401, 'You are not authorized to access this page');
 
 //   OK: 200,
 //   CREATED: 201,

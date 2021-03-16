@@ -6,7 +6,6 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { Length, IsDecimal, IsDate } from 'class-validator';
 
 import User from './UsersModel';
 
@@ -23,19 +22,15 @@ class Sale {
   user: User;
 
   @Column()
-  @IsDecimal()
   total_price: number;
 
   @Column()
-  @Length(0, 100)
   delivery_address: string;
 
   @Column()
-  @Length(0, 50)
   delivery_number: string;
 
   @CreateDateColumn()
-  @IsDate()
   sale_date: Date;
 
   @Column()

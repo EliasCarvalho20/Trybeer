@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-import { Length, IsEmail, IsInt } from 'class-validator';
+import { IsEmail, IsNotEmpty, Length } from 'class-validator';
+import isRegexValid from '../library/decorators';
 
 @Entity('users')
 class User {
@@ -7,14 +8,17 @@ class User {
   id: number;
 
   @Column()
-  @Length(3, 100)
+  @IsNotEmpty()
+  @isRegexValid()
   name: string;
 
   @Column()
+  @IsNotEmpty()
   @IsEmail()
   email: string;
 
   @Column()
+  @IsNotEmpty()
   @Length(6, 20)
   password: string;
 
