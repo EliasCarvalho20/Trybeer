@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-import { Length, IsInt, IsDecimal } from 'class-validator';
+import { Length, IsDecimal } from 'class-validator';
 
 @Entity('products')
 class Product {
