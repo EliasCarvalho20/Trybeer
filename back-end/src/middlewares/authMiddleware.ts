@@ -14,7 +14,6 @@ export default async ({ request }: Action, roles: string[]): Promise<boolean> =>
   const { secret } = tokenConfig;
 
   const isTokenValid = verify(token, secret);
-  console.log(isTokenValid);
 
   const {
     user: { id, role },

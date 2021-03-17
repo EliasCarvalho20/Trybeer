@@ -46,8 +46,6 @@ class CreateSale {
     const dateTime = Date.now();
     this.sale_date = new Date(dateTime);
 
-    console.log(dateTime);
-
     const saleCreated = this.salesRepository.create({
       user_id: this.user_id,
       user: this.user,

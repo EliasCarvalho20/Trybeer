@@ -1,15 +1,16 @@
-import { JsonController, OnUndefined, Get, Post, Body } from 'routing-controllers';
+import { JsonController, OnUndefined, Post, Body } from 'routing-controllers';
 
-import { AuthInterface, userWithTokenInterface } from '../interface';
-import AuthenticateService from '../services/AuthenticateService';
+import { userWithTokenInterface } from '../interface';
+import CreateUser from '../services/UserServices';
 
 @JsonController()
 class AuthenticateController {
   @Post('/login')
   @OnUndefined(404)
-  async createSession(@Body() { email, password }: AuthInterface): Promise<userWithTokenInterface> {
-    const isAuthenticated = new AuthenticateService();
-    return isAuthenticated.execute({ email, password });
+  async createSession(
+    @Body({ validate: true }) login: CreateUser,
+  ): Promise<userWithTokenInterface | boolean> {
+    return new CreateUser().execute(login, true);
   }
 }
 

@@ -11,10 +11,11 @@ export interface AuthInterface {
 }
 
 export interface userWithTokenInterface {
+  id: number;
   name: string;
   email: string;
-  token: string;
   role: string;
+  token: string;
 }
 
 export type productArray = Array<{
