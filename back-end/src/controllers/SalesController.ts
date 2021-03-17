@@ -1,3 +1,4 @@
+import { Request, Response } from 'express';
 import {
   JsonController,
   Get,
@@ -10,7 +11,6 @@ import {
   OnUndefined,
 } from 'routing-controllers';
 
-import { Response } from 'express';
 import Sale from '../models/SalesModel';
 import CreateSale from '../services/SalesService';
 
@@ -31,7 +31,10 @@ class SalesController {
     @Res() res: Response,
     @Body({ validate: true }) sale: CreateSale,
   ): Promise<void> {
-    const saleCreated = await new CreateSale().execute(req.id, sale);
+    const {
+      user: { id },
+    } = req;
+    const saleCreated = await new CreateSale().execute(id, sale);
     res.json(saleCreated);
   }
 }

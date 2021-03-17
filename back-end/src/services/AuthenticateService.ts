@@ -5,8 +5,7 @@ import { sign } from 'jsonwebtoken';
 import User from '../models/UsersModel';
 import { AuthInterface, userWithTokenInterface } from '../interface';
 import { invalidEmailOrPassword, invalidEntry } from '../library/errors';
-
-const secret = 'ThisIsNotASecret';
+import tokenConfig from '../config/tokenConfig';
 
 class AuthenticateService {
   public async execute({ email, password }: AuthInterface): Promise<userWithTokenInterface> {
@@ -20,9 +19,10 @@ class AuthenticateService {
     // const passwordMatched = compareSync(password, isUserValid.password);
     // if (!passwordMatched) throw invalidEmailOrPassword;
 
+    const { secret, expiresIn } = tokenConfig;
     const { password: _, ...userWithoutPassword } = isUserValid;
 
-    const token = sign(userWithoutPassword, secret, { expiresIn: '2d' });
+    const token = sign({ user: userWithoutPassword }, secret, { expiresIn });
 
     return {
       ...userWithoutPassword,

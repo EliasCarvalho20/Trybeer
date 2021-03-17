@@ -4,20 +4,26 @@ import { getRepository } from 'typeorm';
 import User from '../models/UsersModel';
 
 import { missingToken, notAuthorized } from '../library/errors';
-
-const secret = 'ThisIsNotASecret';
+import { tokenInterface } from '../interface';
+import tokenConfig from '../config/tokenConfig';
 
 export default async ({ request }: Action, roles: string[]): Promise<boolean> => {
   const token = request.headers.authorization;
   if (!token) throw missingToken;
 
-  const isTokenValid = verify(token, secret);
+  const { secret } = tokenConfig;
 
-  const { email, role }: any = isTokenValid;
-  const user = await getRepository(User).findOne({ where: { email, role } });
+  const isTokenValid = verify(token, secret);
+  console.log(isTokenValid);
+
+  const {
+    user: { id, role },
+  } = isTokenValid as tokenInterface;
+  const user = await getRepository(User).findOne({ where: { id, role } });
 
   if (!user && roles.findIndex(item => role === item) === -1) throw notAuthorized;
-  request.id = user.id;
+
+  request.user = { id };
 
   return true;
 };
