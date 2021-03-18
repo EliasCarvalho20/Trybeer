@@ -17,6 +17,17 @@
   ],
   "rules": {
     "class-methods-use-this": "off",
+    "no-console": "off",
+    "camelcase": ["error"],
+    "nestedBinaryExpressions": 0,
+    "no-mixed-operators:": 0,
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never"
+      }
+    ],
     "prettier/prettier": [
       "error",
       {
@@ -28,16 +39,16 @@
         "printWidth": 100,
         "arrowParens": "avoid"
       }
-    ],
-    "no-console": "off",
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "ts": "never"
-      }
     ]
   },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "rules": {
+        "camelcase": ["off"]
+      }
+    }
+  ],
   "settings": {
     "import/resolver": {
       "typescript": {}
