@@ -1,4 +1,57 @@
 {
   "root": true,
-  "extends": ["trybe-backend"]
+  "env": {
+    "commonjs": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "rules": {
+    "class-methods-use-this": "off",
+    "no-console": "off",
+    "camelcase": ["error"],
+    "nestedBinaryExpressions": 0,
+    "no-mixed-operators:": 0,
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never"
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "semi": true,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "useTabs": false,
+        "trailingComma": "all",
+        "printWidth": 100,
+        "arrowParens": "avoid"
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "rules": {
+        "camelcase": ["off"]
+      }
+    }
+  ],
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
 }
