@@ -4,6 +4,7 @@ import { Length, IsDecimal, IsNotEmpty } from 'class-validator';
 import Sale from '../models/SalesModel';
 import User from '../models/UsersModel';
 import { SalesInterface } from '../interface';
+import { saleNotFound } from '../library/errors';
 
 class CreateSale {
   salesRepository: Repository<Sale>;
@@ -63,7 +64,11 @@ class CreateSale {
 
   public async getSaleById(id: number): Promise<Sale | void> {
     this.salesRepository = getRepository(Sale);
-    return this.salesRepository.findOne({ where: { id } });
+
+    const saleById = await this.salesRepository.findOne({ where: { id } });
+    if (!saleById) throw saleNotFound;
+
+    return saleById;
   }
 }
 

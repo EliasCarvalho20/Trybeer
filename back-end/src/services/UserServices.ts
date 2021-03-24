@@ -40,9 +40,7 @@ class CreateUser {
     this.role = role;
     this.login = login;
 
-    if (login) return this.createToken();
-
-    return true;
+    return login ? this.createToken() : true;
   }
 
   public async validateUser(): Promise<User> {
