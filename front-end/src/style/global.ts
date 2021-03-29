@@ -7,7 +7,7 @@ export default createGlobalStyle`
     --orange-primary: #ff9000;
     --white-orange: #f4ede8;
     --red-error: #c53030;
-    --grey: #656360;
+    --grey: #726d6c;
     --white: #fff;
   }
 
