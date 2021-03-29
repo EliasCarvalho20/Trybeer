@@ -7,8 +7,8 @@ const nameRegex = /^([a-zÀ-ÿ]\s*){3,}$/i;
 export default (data: DataValidation): void => {
   const registerSchema = Yup.object().shape({
     name: Yup.string()
-      .required('Name is required')
-      .matches(nameRegex, 'Name must be at least 3 long, no numbers and special characters'),
+      .matches(nameRegex, 'Name must be at least 3 characters long. No numbers and special characters')
+      .required('Name is required'),
     email: Yup.string()
       .required('Email is required')
       .email('Enter a valid email address'),

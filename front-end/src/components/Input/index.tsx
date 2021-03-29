@@ -2,8 +2,9 @@ import React, {
   FC, useRef, useEffect, useState, useCallback,
 } from 'react';
 import { useField } from '@unform/core';
+import { FiAlertCircle } from 'react-icons/fi';
 
-import { Container } from './style';
+import { Container, Error } from './style';
 import { InputProps } from './interface';
 
 const Input: FC<InputProps> = ({ name, ...rest }) => {
@@ -40,6 +41,12 @@ const Input: FC<InputProps> = ({ name, ...rest }) => {
         ref={ inputRef }
         { ...rest }
       />
+
+      {error && (
+        <Error title={ error }>
+          <FiAlertCircle color="#c53030" size={ 20 } />
+        </Error>
+      )}
     </Container>
   );
 };

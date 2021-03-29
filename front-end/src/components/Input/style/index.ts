@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { ContainerProps } from '../interface';
+import Tooltip from '../../Tooltip';
 
 export const Container = styled.div<ContainerProps>`
   align-items: center;
@@ -39,4 +40,13 @@ export const Container = styled.div<ContainerProps>`
       color: var(--grey);
     }
   }
+`;
+
+export const Error = styled(Tooltip)`
+  height: 20px;
+  margin-left: 10px;
+  
+  svg {
+    margin: 0;
+  }  
 `;
