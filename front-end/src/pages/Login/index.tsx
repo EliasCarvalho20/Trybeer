@@ -8,6 +8,7 @@ import loginValidation from './validation';
 import { DataValidation } from './interface';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import { Container, Content, Background } from './style';
 
 const Login: FC = () => {
   const formRef = useRef<FormHandles>(null);
@@ -26,18 +27,29 @@ const Login: FC = () => {
 
   return (
     <>
-      <Form ref={ formRef } onSubmit={ handleSubmit }>
-        <Input
-          name="email"
-          placeholder="Email"
-        />
-        <Input
-          name="password"
-          placeholder="Password"
-          type="password"
-        />
-        <Button type="submit">Login</Button>
-      </Form>
+      <Container>
+        <Background />
+
+        <Content>
+          <Form ref={ formRef } onSubmit={ handleSubmit }>
+            <h1>Login</h1>
+            <Input
+              name="email"
+              placeholder="Email"
+            />
+            <Input
+              name="password"
+              placeholder="Password"
+              type="password"
+            />
+            <Button type="submit">Login</Button>
+
+            <a href="a">Forget your password?</a>
+          </Form>
+
+          <a href="/register">Dont have an account yet?</a>
+        </Content>
+      </Container>
     </>
   );
 };
