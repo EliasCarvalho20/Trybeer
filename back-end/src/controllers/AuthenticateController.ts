@@ -2,6 +2,7 @@ import { JsonController, OnUndefined, Post, Body } from 'routing-controllers';
 
 import { userWithTokenInterface } from '../interface';
 import CreateUser from '../services/UserServices';
+import User from '../models/UsersModel';
 
 @JsonController()
 class AuthenticateController {
@@ -9,7 +10,7 @@ class AuthenticateController {
   @OnUndefined(404)
   async createSession(
     @Body({ validate: true }) login: CreateUser,
-  ): Promise<userWithTokenInterface | boolean> {
+  ): Promise<userWithTokenInterface | User> {
     return new CreateUser().execute(login, true);
   }
 }

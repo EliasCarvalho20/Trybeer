@@ -26,8 +26,12 @@
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "react/jsx-one-extension-per-line": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "no-unused-expressions": "off",
     "import/prefer-default-export": "off",
     "camelcase": ["error"],
+    "no-console": "off",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       {
@@ -40,6 +44,31 @@
       {
         "ts": "never",
         "tsx": "never"
+      }
+    ],
+    "react/jsx-closing-bracket-location": [
+      "error"
+    ],
+    "react/jsx-closing-tag-location": [
+      "error"
+    ],
+    "react/jsx-curly-spacing": [
+      "error",
+      {
+        "when": "always"
+      }
+    ],
+    "react/jsx-equals-spacing": [
+      "error",
+      "never"
+    ],
+    "react/jsx-tag-spacing": [
+      "error",
+      {
+        "closingSlash": "never",
+        "beforeSelfClosing": "always",
+        "afterOpening": "never",
+        "beforeClosing": "never"
       }
     ]
   },

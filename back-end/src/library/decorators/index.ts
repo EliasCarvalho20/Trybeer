@@ -8,11 +8,11 @@ const isRegexValid = () => {
       target: object.constructor,
       propertyName,
       options: {
-        message: 'The name must have at least 12 characters and must contain only letters and spaces'
+        message: 'Name must be at least 12 characters long'
       },
       validator: {
         validate(value: any) {
-          return (/([A-Z]\s*){12,}/gi).test(value);
+          return (/^([a-zÀ-ÿ]\s*){12,}$/i).test(value);
         },
       },
     });
