@@ -13,33 +13,21 @@ export const Content = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  max-width: 800px;  
+  max-width: 800px;
   place-content: center;
   width: 100%;
   
   form {
     margin: 80px 0;
     text-align: center;
-    width: 300px;    
+    width: 300px;
     
     h1 {
       margin-bottom: 30px;
     }
-    
-    a {
-      color: var(--white-orange);
-      display: block;
-      margin-top: 25px;
-      text-decoration: none;
-      transition: .3s ease;
-      
-      &:hover {
-        color: ${shade(0.2, '#f4ede8')};
-      }
-    }    
   }
-  
-  > a {
+
+  a {
     align-items: center;
     color: var(--orange-primary);
     display: flex;
@@ -49,7 +37,8 @@ export const Content = styled.div`
     &:hover {
       color: ${shade(0.2, '#ff9000')};
     }
-  }
+  }  
+  
 `;
 
 export const Background = styled.div`

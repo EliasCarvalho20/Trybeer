@@ -3,21 +3,21 @@ import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
 import getValidationErrors from '../../utils/getValidationErrors';
-import loginValidation from './validation';
+import registerValidation from './validation';
 
 import { DataValidation } from './interface';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { Container, Content, Background } from './style';
 
-const Login: FC = () => {
+const Register: FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback((data: DataValidation) => {
     try {
       formRef.current?.setErrors({});
 
-      loginValidation(data);
+      registerValidation(data);
     } catch (err) {
       const error = getValidationErrors(err);
 
@@ -28,25 +28,25 @@ const Login: FC = () => {
   return (
     <>
       <Container>
-        <Background />
-
         <Content>
           <Form ref={ formRef } onSubmit={ handleSubmit }>
-            <h1>Login</h1>
+            <h1>Register</h1>
 
+            <Input name="name" placeholder="Name" />
             <Input name="email" placeholder="Email" />
             <Input name="password" placeholder="Password" type="password" />
 
-            <Button type="submit">Login</Button>
+            <Button type="submit">Send</Button>
 
-            <a href="a">Forget your password?</a>
           </Form>
 
-          <a href="/register">Don&apos;t have an account yet?</a>
+          <a href="/login">Already have an account?</a>
         </Content>
+
+        <Background />
       </Container>
     </>
   );
 };
 
-export default Login;
+export default Register;
