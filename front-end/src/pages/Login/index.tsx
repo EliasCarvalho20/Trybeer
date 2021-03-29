@@ -47,7 +47,7 @@ const Login: FC = () => {
             <a href="a">Forget your password?</a>
           </Form>
 
-          <a href="/register">Dont have an account yet?</a>
+          <a href="/register">Don&apos;t have an account yet?</a>
         </Content>
       </Container>
     </>

@@ -19,7 +19,7 @@ export default createGlobalStyle`
   }
 
   body {
-    background: var(--background-secondary);
+    background: var(--background);
     color: var(--white);
     -webkit-font-smoothing: antialiased;
   }

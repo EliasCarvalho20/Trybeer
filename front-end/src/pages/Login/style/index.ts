@@ -29,7 +29,7 @@ export const Content = styled.div`
     a {
       color: var(--white-orange);
       display: block;
-      margin-bottom: 15px;
+      margin-top: 25px;
       text-decoration: none;
       transition: .3s ease;
       
