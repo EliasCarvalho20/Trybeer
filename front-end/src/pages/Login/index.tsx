@@ -2,12 +2,12 @@ import React, { FC, useRef, useCallback } from 'react';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
-import api from '../../services/api';
-import { DataValidation } from './interface';
 import getValidationErrors from '../../utils/getValidationErrors';
 import loginValidation from './validation';
 
+import { DataValidation } from './interface';
 import Input from '../../components/Input';
+import Button from '../../components/Button';
 
 const Login: FC = () => {
   const formRef = useRef<FormHandles>(null);
@@ -36,7 +36,7 @@ const Login: FC = () => {
           placeholder="Password"
           type="password"
         />
-        <button type="submit">Login</button>
+        <Button type="submit">Login</Button>
       </Form>
     </>
   );
