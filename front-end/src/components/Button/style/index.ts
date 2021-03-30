@@ -11,7 +11,7 @@ export const Container = styled.button`
   margin-top: 16px;
   padding: 0 16px;
   transition: .5s ease;
-  width: 100%;
+  width: 80%;
 
   &:hover {
     background: ${shade(0.2, '#ff9000')}

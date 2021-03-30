@@ -7,7 +7,7 @@ import { FiAlertCircle } from 'react-icons/fi';
 import { Container, Error } from './style';
 import { InputProps } from './interface';
 
-const Input: FC<InputProps> = ({ name, ...rest }) => {
+const Input: FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [isFocused, setIsFocused] = useState(false);
@@ -34,6 +34,7 @@ const Input: FC<InputProps> = ({ name, ...rest }) => {
 
   return (
     <Container isFilled={ isFilled } isFocused={ isFocused } isErrored={ !!error }>
+      {Icon && <Icon size={ 20 } />}
       <input
         onFocus={ handleInputFocus }
         onBlur={ handleInputBlur }

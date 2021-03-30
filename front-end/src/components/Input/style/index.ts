@@ -7,14 +7,14 @@ export const Container = styled.div<ContainerProps>`
   align-items: center;
   background: var(--background);
   border-radius: 10px;
-  border: 2px solid var(--white-orange);
+  border: 2px solid var(--orange-primary);
   color: var(--grey);
   display: flex;
   padding: 16px;
-  width: 100%;
+  width: 80%;
   
   & + div {
-    margin-top: 10px;
+    margin-top: 12px;
   }
 
   ${(props) => props.isErrored && css`
@@ -23,11 +23,11 @@ export const Container = styled.div<ContainerProps>`
   
   ${(props) => props.isFocused && css`
     color: var(--orange-primary);
-    border-color: var(--orange-primary);
+    border-color: var(--white-orange);
   `}
 
   ${(props) => props.isFilled && css`
-    color: var(--orange-primary);
+    color: var(--white-orange);
   `}
   
   input {
@@ -39,6 +39,10 @@ export const Container = styled.div<ContainerProps>`
     &::placeholder {
       color: var(--grey);
     }
+  }
+
+  svg {
+    margin-right: 16px;
   }
 `;
 

@@ -15,21 +15,27 @@ export const Content = styled.div`
   flex-direction: column;
   max-width: 800px;  
   place-content: center;
-  width: 100%;
+  width: 100%;  
   
   form {
-    margin: 80px 0;
+    align-items: center;
+    background: var(--background-secondary);
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    height: 370px;
     text-align: center;
-    width: 300px;    
+    width: 400px;
     
     h1 {
-      margin-bottom: 30px;
+      margin: 30px 0;
     }
     
     a {
+      align-self: flex-end;
       color: var(--white-orange);
-      display: block;
-      margin-top: 25px;
+      display: flex;
+      margin: 10px 40px 0 0;
       text-decoration: none;
       transition: .3s ease;
       
@@ -39,15 +45,25 @@ export const Content = styled.div`
     }    
   }
   
-  > a {
+  > span {
     align-items: center;
-    color: var(--orange-primary);
+    color: var(--white-orange);
     display: flex;
-    text-decoration: none;
-    transition: .3s ease;
+    margin-top: 20px;    
+    
+    a {
+      color: var(--orange-primary);
+      margin-left: 5px;
+      transition: .3s ease;
+      text-decoration: none;
 
-    &:hover {
-      color: ${shade(0.2, '#ff9000')};
+      &:hover {
+        color: ${shade(0.2, '#ff9000')};
+      }      
+    }   
+
+    svg {
+      margin-right: 10px;
     }
   }
 `;
