@@ -11,6 +11,10 @@ export default createGlobalStyle`
     --white: #fff;
   }
 
+  html, body, #root {
+    height: 100%;
+  }
+
   * {
     box-sizing: border-box;
     margin: 0;

@@ -5,12 +5,10 @@ import Routes from './routes';
 import GlobalStyle from './style/global';
 
 const App: FC = () => (
-  <>
-    <BrowserRouter>
-      <Routes />
-    </BrowserRouter>
+  <BrowserRouter>
     <GlobalStyle />
-  </>
+    <Routes />
+  </BrowserRouter>
 );
 
 export default App;

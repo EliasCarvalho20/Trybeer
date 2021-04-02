@@ -1,4 +1,5 @@
 import React, { FC, useRef, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
@@ -63,7 +64,7 @@ const Login: FC = () => {
           <span>
             <FiLogIn />
             Don&apos;t have an account yet?
-            <a href="/register">Sign Up</a>
+            <Link to="register">Sign Up</Link>
           </span>
         </Content>
       </Container>
