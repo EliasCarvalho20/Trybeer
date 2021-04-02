@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
 
-import beerBackground from '../../../assets/img/beer-background.jpg';
-
 export const Container = styled.div`
-  height: 100vh;
-  display: flex;
   align-items: stretch;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin: auto;
 `;
 
 export const Content = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   max-width: 800px;  
-  place-content: center;
   width: 100%;
 
   img {
@@ -29,6 +29,7 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     height: 370px;
+    transform: translateY(-15%);
     text-align: center;
     width: 400px;
     
@@ -54,7 +55,7 @@ export const Content = styled.div`
     align-items: center;
     color: var(--white-orange);
     display: flex;
-    margin-top: 20px;    
+    transform: translateY(-150%);
     
     a {
       color: var(--orange-primary);
@@ -69,12 +70,11 @@ export const Content = styled.div`
 
     svg {
       margin-right: 10px;
+      transform: translateY(10%)
+    }
+    
+    svg > *  { 
+      color: var(--orange-primary);
     }
   }
-`;
-
-export const Background = styled.div`
-  flex: 1;
-  background: url(${beerBackground}) no-repeat center;
-  background-size: cover;
 `;

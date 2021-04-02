@@ -21,8 +21,7 @@ export const Sidebar = styled.div`
   left: 0;
   position: absolute;
   top: 0;
-  width: 104px;
-  
+  width: 104px;  
   filter: drop-shadow(0 4px 4px 
         rgba(0, 0, 0, 0.25));
   
@@ -53,7 +52,6 @@ export const Menu = styled.div`
     width: 92px;
     height: 102px;
     left: 0;
-
     border-radius: 10px;       
     
     svg {

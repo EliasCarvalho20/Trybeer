@@ -11,7 +11,7 @@ import registerValidation from './validation';
 import { DataValidation } from './interface';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import { Container, Content, Background } from './style';
+import { Container, Content } from './style';
 import logo from '../../assets/img/logo.png';
 
 const Register: FC = () => {
@@ -74,8 +74,6 @@ const Register: FC = () => {
             <a href="/login">Login</a>
           </span>
         </Content>
-
-        <Background />
       </Container>
     </>
   );
