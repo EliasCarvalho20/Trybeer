@@ -1,11 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
-// #232129
+
 export default createGlobalStyle`
   :root {
-    --background: #282431;
-    --background-secondary: #201e2a;
-    --orange-primary: #ff9000;
-    --white-orange: #f4ede8;
+    --background: #39374b;
+    --background-secondary: #1F1D2B;
+    --orange-primary: #EA7C69;
+    --white-orange: #ded9d8;
     --red-error: #c53030;
     --grey: #726d6c;
     --white: #fff;
@@ -25,7 +25,7 @@ export default createGlobalStyle`
   }
 
   body, input, button {
-    font: 16px Roboto, sans-serif;
+    font: 16px Barlow, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6, strong {

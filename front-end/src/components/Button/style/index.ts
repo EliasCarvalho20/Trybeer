@@ -6,7 +6,9 @@ export const Container = styled.button`
   border-radius: 10px;
   border: 0;
   color: var(--white-orange);
-  font-weight: 500;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
   height: 56px;
   margin-top: 16px;
   padding: 0 16px;
@@ -14,6 +16,6 @@ export const Container = styled.button`
   width: 80%;
 
   &:hover {
-    background: ${shade(0.2, '#ff9000')}
+    background: ${shade(0.2, '#EA7C69')}
   }
 `;

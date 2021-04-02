@@ -15,7 +15,12 @@ export const Content = styled.div`
   flex-direction: column;
   max-width: 800px;  
   place-content: center;
-  width: 100%;  
+  width: 100%;
+
+  img {
+    transform: translateY(-80%);
+    width: 50%;
+  }
   
   form {
     align-items: center;
@@ -40,7 +45,7 @@ export const Content = styled.div`
       transition: .3s ease;
       
       &:hover {
-        color: ${shade(0.2, '#f4ede8')};
+        color: ${shade(0.2, '#EA7C69')};
       }
     }    
   }
@@ -58,7 +63,7 @@ export const Content = styled.div`
       text-decoration: none;
 
       &:hover {
-        color: ${shade(0.2, '#ff9000')};
+        color: ${shade(0.2, '#EA7C69')};
       }      
     }   
 
