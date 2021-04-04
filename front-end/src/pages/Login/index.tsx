@@ -1,4 +1,6 @@
-import React, { FC, useRef, useCallback } from 'react';
+import React, {
+  FC, useRef, useCallback, useContext,
+} from 'react';
 import { Link } from 'react-router-dom';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
 import { Form } from '@unform/web';
@@ -7,6 +9,8 @@ import { FormHandles } from '@unform/core';
 import getValidationErrors from '../../utils/getValidationErrors';
 import loginValidation from './validation';
 
+import { TransitionContext } from '../../context/TransitionContext';
+
 import { DataValidation } from './interface';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -14,7 +18,12 @@ import { Container, Content } from './style';
 import logo from '../../assets/img/logo.png';
 
 const Login: FC = () => {
+  const { setPreset } = useContext(TransitionContext);
   const formRef = useRef<FormHandles>(null);
+
+  const handlePageTransition = useCallback(() => {
+    setTimeout(() => setPreset('fadeRightFadeLeft'), 1000);
+  }, [setPreset]);
 
   const handleInputChange = useCallback(({ target: { id } }) => {
     formRef.current?.setFieldError(id, '');
@@ -64,7 +73,7 @@ const Login: FC = () => {
           <span>
             <FiLogIn />
             Don&apos;t have an account yet?
-            <Link to="register">Sign Up</Link>
+            <Link to="register" onClick={ handlePageTransition }>Sign Up</Link>
           </span>
         </Content>
       </Container>

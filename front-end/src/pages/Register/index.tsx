@@ -1,4 +1,6 @@
-import React, { FC, useRef, useCallback } from 'react';
+import React, {
+  FC, useRef, useCallback, useContext,
+} from 'react';
 import { Link } from 'react-router-dom';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
@@ -9,6 +11,8 @@ import {
 import getValidationErrors from '../../utils/getValidationErrors';
 import registerValidation from './validation';
 
+import { TransitionContext } from '../../context/TransitionContext';
+
 import { DataValidation } from './interface';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -16,11 +20,16 @@ import { Container, Content } from './style';
 import logo from '../../assets/img/logo.png';
 
 const Register: FC = () => {
+  const { setPreset } = useContext(TransitionContext);
   const formRef = useRef<FormHandles>(null);
 
   const handleInputChange = useCallback(({ target: { id } }) => {
     formRef.current?.setFieldError(id, '');
   }, []);
+
+  const handlePageTransition = useCallback(() => {
+    setTimeout(() => setPreset('fadeLeftFadeRight'), 1000);
+  }, [setPreset]);
 
   const handleSubmit = useCallback((data: DataValidation) => {
     try {
@@ -72,7 +81,7 @@ const Register: FC = () => {
           <span>
             <FiArrowLeft />
             Already have an account?
-            <Link to="login">Login</Link>
+            <Link to="login" onClick={ handlePageTransition }>Login</Link>
           </span>
         </Content>
       </Container>

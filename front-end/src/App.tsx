@@ -3,12 +3,15 @@ import { BrowserRouter } from 'react-router-dom';
 
 import Routes from './routes';
 import GlobalStyle from './style/global';
+import { TransitionContextProvider } from './context/TransitionContext';
 
 const App: FC = () => (
-  <BrowserRouter>
-    <GlobalStyle />
-    <Routes />
-  </BrowserRouter>
+  <TransitionContextProvider>
+    <BrowserRouter>
+      <GlobalStyle />
+      <Routes />
+    </BrowserRouter>
+  </TransitionContextProvider>
 );
 
 export default App;

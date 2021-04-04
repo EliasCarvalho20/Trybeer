@@ -1,9 +1,6 @@
 import React, { FC } from 'react';
 
-interface SvgInterface {
- className: string;
- SvgComponent: FC
-}
+import { SvgInterface } from './interface';
 
 const Svg: FC<SvgInterface> = ({ SvgComponent }) => (<SvgComponent />);
 
