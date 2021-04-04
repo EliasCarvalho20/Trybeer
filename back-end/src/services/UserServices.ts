@@ -32,7 +32,7 @@ class CreateUser {
   public async execute(
     { name = '', email, password, role = 'client' }: UserInterface,
     login = false,
-  ): Promise<boolean | userWithTokenInterface> {
+  ): Promise<userWithTokenInterface | User> {
     this.usersRepository = getRepository(User);
     this.name = name;
     this.email = email;
@@ -40,7 +40,7 @@ class CreateUser {
     this.role = role;
     this.login = login;
 
-    return login ? this.createToken() : true;
+    return login ? this.createToken() : this.validateUser();
   }
 
   public async validateUser(): Promise<User> {
