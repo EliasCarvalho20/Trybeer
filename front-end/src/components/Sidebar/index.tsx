@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { SideBar, Menu } from './style';
+import { Container, Menu } from './style';
 import Svg from '../Svg';
 import sideLogo from '../../assets/sidebar/logo.png';
 import {
@@ -12,7 +12,7 @@ const Sidebar: FC = () => {
 
   return (
     <>
-      <SideBar>
+      <Container>
         <img src={ sideLogo } alt="Sidebar Logo" />
 
         <Menu>
@@ -23,7 +23,7 @@ const Sidebar: FC = () => {
           ))}
           <LogOut />
         </Menu>
-      </SideBar>
+      </Container>
     </>
   );
 };

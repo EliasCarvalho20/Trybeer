@@ -5,7 +5,7 @@ import { ContextProps } from './interface';
 export const TransitionContext = createContext<Partial<ContextProps>>({});
 
 export const TransitionContextProvider: FC = ({ children }) => {
-  const [preset, setPreset] = useState('moveToLeftFromRight');
+  const [preset, setPreset] = useState('fadeLeftFadeRight');
 
   return (
     <TransitionContext.Provider value={ { preset, setPreset } }>

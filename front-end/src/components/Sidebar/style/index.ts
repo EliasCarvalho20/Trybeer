@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SideBar = styled.div`
+export const Container = styled.div`
   background: var(--background-secondary);
   border-radius: 15px;   
   height: 834px;
